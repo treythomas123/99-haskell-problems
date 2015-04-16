@@ -8,9 +8,7 @@
 -- encode "aaaabccaadeeee"
 -- [(4,'a'),(1,'b'),(2,'c'),(2,'a'),(1,'d'),(4,'e')]
 
+import P09
+
 encode :: (Eq a) => [a] -> [(Int,a)]
-encode [] = []
-encode (x:xs) = [(length dupes, x)] ++ encode rest
-    where split = span (==x) (x:xs)
-          dupes = fst split
-          rest = snd split
+encode = map (\e -> (length e, head e)) . pack
